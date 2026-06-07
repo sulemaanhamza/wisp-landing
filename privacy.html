@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Wisp</title>
+    <meta name="description" content="Wisp's privacy policy. Wisp does not collect, transmit, or process any user data.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='Charter, Georgia, serif'%3EW%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="brand" aria-label="Wisp home">
+            <span class="brand-mark">W</span>
+            <span class="brand-name">Wisp</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#install">Install</a>
+            <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme" title="Cycle theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="legal-main">
+        <h1>Privacy Policy</h1>
+        <p class="legal-meta">Last updated: June 7, 2026</p>
+
+        <p>
+            Wisp is built to respect your privacy by design. This page describes what
+            data Wisp does and does not handle — written in plain language because
+            that's what you'd want.
+        </p>
+
+        <h2>The short version</h2>
+        <p>
+            Wisp does not collect, transmit, or process any personal data. There are
+            no accounts, no telemetry, no analytics, no crash reporting, no
+            "anonymized usage statistics," and no third-party SDKs of any kind.
+            Your scratchpad never leaves your Mac unless you choose to put it inside
+            a sync folder (iCloud Drive, Dropbox, etc.), in which case the sync is
+            handled by that service — not by Wisp.
+        </p>
+
+        <h2>What stays on your device</h2>
+        <ul>
+            <li>
+                Your scratchpad text, stored at
+                <code>~/Library/Application Support/Wisp/scratchpad.md</code> by
+                default — or wherever you've chosen via Storage Location.
+            </li>
+            <li>
+                Your preferences (theme, font, keyboard shortcut, custom storage
+                path) in macOS UserDefaults, under the bundle identifier
+                <code>com.sulemaanhamza.wisp</code>.
+            </li>
+            <li>
+                The "Launch at Login" registration state, managed by macOS via
+                <code>SMAppService</code> — surfaced to you under
+                System Settings &rarr; General &rarr; Login Items.
+            </li>
+        </ul>
+
+        <h2>The only network requests Wisp makes</h2>
+        <p>
+            Wisp checks for updates by making HTTPS requests to GitHub's public
+            Releases API:
+        </p>
+        <ul>
+            <li>
+                <code>GET https://api.github.com/repos/sulemaanhamza/wisp/releases/latest</code>
+                — to find out the latest published version. The request body is
+                empty; no Wisp-specific identifiers are sent.
+            </li>
+            <li>
+                When you click <em>Update &amp; Restart</em>, Wisp downloads the
+                release zip from <code>github.com</code>.
+            </li>
+        </ul>
+        <p>
+            That's it. GitHub's own privacy practices apply to those requests, and
+            they will see your IP address and the User-Agent your operating system
+            sends — the same as any normal web request. Wisp does not add headers,
+            cookies, account identifiers, or tracking parameters.
+        </p>
+
+        <h2>If you enable sync</h2>
+        <p>
+            Wisp lets you choose any folder on disk as the location for
+            <code>scratchpad.md</code>. If you point it at a folder inside iCloud
+            Drive, Dropbox, Syncthing, or any other sync service, your text will be
+            synced by that service to wherever you've configured it. Wisp itself
+            does not participate in the sync — it just reads and writes a file.
+        </p>
+        <p>
+            The sync service's privacy policy governs how your text is transmitted
+            and stored. Wisp recommends iCloud Drive for most users because it's
+            already on every Mac.
+        </p>
+
+        <h2>What we will never do</h2>
+        <ul>
+            <li>Add an account system or sign-in.</li>
+            <li>Send your text, your preferences, or any identifier off your Mac.</li>
+            <li>Add a paid tier or upsell that changes this policy.</li>
+            <li>Sell, share, or transfer any data — because there is none to share.</li>
+            <li>Add advertising or sponsored content.</li>
+        </ul>
+
+        <h2>Source code</h2>
+        <p>
+            Wisp is open source under the MIT license. You can read every line at
+            <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">github.com/sulemaanhamza/wisp</a>
+            to verify these claims yourself, or grep for any network call.
+        </p>
+
+        <h2>Changes to this policy</h2>
+        <p>
+            If this policy ever changes meaningfully, the updated version will live
+            here with a new "Last updated" date. The intent is for it to keep saying
+            roughly the same thing it does today: Wisp does not collect data.
+        </p>
+
+        <h2>Questions</h2>
+        <p>
+            Open an issue at
+            <a href="https://github.com/sulemaanhamza/wisp/issues" target="_blank" rel="noopener">github.com/sulemaanhamza/wisp/issues</a>.
+        </p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="brand-mark">W</span>
+                <p class="footer-tag">A dead-simple macOS scratchpad.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Wisp</h4>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#install">Install</a>
+                <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>
+            </div>
+            <div class="footer-col">
+                <h4>Source</h4>
+                <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
+                <a href="https://github.com/sulemaanhamza/wisp/issues" target="_blank" rel="noopener">Report an issue</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy policy</a>
+                <a href="terms.html">Terms of service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Suleman Hamza</span>
+            <span>Made for people who type before they think.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wisp is a dead-simple macOS scratchpad. ⌥Space to summon, type, Esc to dismiss. Free, open source, no account required.">
+    <meta name="theme-color" content="#0f0f12">
+
+    <meta property="og:title" content="Wisp — a dead-simple macOS scratchpad">
+    <meta property="og:description" content="One keystroke. One page. No accounts, no folders, no friction.">
+    <meta property="og:type" content="website">
+
+    <title>Wisp — a dead-simple macOS scratchpad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='Charter, Georgia, serif'%3EW%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="brand" aria-label="Wisp home">
+            <span class="brand-mark">W</span>
+            <span class="brand-name">Wisp</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#install">Install</a>
+            <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme" title="Cycle theme">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="hero-line">A clean page,</span>
+                    <span class="hero-line muted">one keystroke away.</span>
+                </h1>
+                <p class="hero-desc">
+                    Wisp is a macOS scratchpad. Press <kbd>⌥</kbd><kbd>Space</kbd> anywhere
+                    and a glass panel slides in. Type. Hit <kbd>Esc</kbd>. It's gone — but
+                    your text stays, as plain markdown on disk.
+                </p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary" id="downloadBtn">
+                        <span class="btn-label">Download for macOS</span>
+                        <span class="btn-meta" id="downloadMeta">Latest release</span>
+                    </a>
+                    <a href="https://github.com/sulemaanhamza/wisp" class="btn btn-ghost" target="_blank" rel="noopener">
+                        View source
+                    </a>
+                </div>
+                <p class="hero-fine">
+                    Requires macOS 13 (Ventura) or later, Apple silicon. Free and open source.
+                </p>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <div class="desktop">
+                    <div class="menubar">
+                        <span class="menubar-dot"></span>
+                        <span class="menubar-glyph">≋</span>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-body">
+                            <p class="panel-line panel-h">## Today</p>
+                            <p class="panel-line">- review PR #3</p>
+                            <p class="panel-line">- ship v0.1.40</p>
+                            <p class="panel-line">- <span class="panel-cursor"></span></p>
+                            <p class="panel-line panel-divider" aria-hidden="true"></p>
+                            <p class="panel-line panel-muted">A clean page, one keystroke away.</p>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="panel-words">8 words</span>
+                            <span class="panel-icons">? ☀ Aa</span>
+                            <span class="panel-esc">esc to close</span>
+                        </div>
+                    </div>
+                    <div class="kbd-hint">
+                        <kbd>⌥</kbd><kbd>Space</kbd>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <header class="section-head">
+                <h2>Everything you need.<br><span class="muted">Nothing you don't.</span></h2>
+            </header>
+
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>One keystroke</h3>
+                    <p>⌥Space anywhere on macOS summons the panel. Rebindable to any combo.
+                       Esc dismisses and returns focus to where you were.</p>
+                </div>
+                <div class="feature">
+                    <h3>Plain markdown</h3>
+                    <p>Your text lives at <code>~/Library/Application Support/Wisp/scratchpad.md</code>.
+                       Open it in any editor. Pipe it through anything. It's just a file.</p>
+                </div>
+                <div class="feature">
+                    <h3>Sync across Macs</h3>
+                    <p>Point Wisp at any folder — iCloud Drive, Dropbox, Syncthing — and your
+                       scratchpad follows you to every Mac you own. macOS handles the sync.</p>
+                </div>
+                <div class="feature">
+                    <h3>Smart editing</h3>
+                    <p>Lists auto-continue. <code>---</code> becomes a full-width divider.
+                       <code>**bold**</code> renders inline. Headings get a jump-bar at the top.
+                       <code>:rocket:</code> becomes 🚀.</p>
+                </div>
+                <div class="feature">
+                    <h3>Light, dark, system</h3>
+                    <p>Six preinstalled serifs and sans. Three text sizes. Theme follows your
+                       OS by default, or pin it to light or dark.</p>
+                </div>
+                <div class="feature">
+                    <h3>Quiet at login</h3>
+                    <p>Launch at Login starts Wisp silently in the menu bar — ready for
+                       ⌥Space the moment you need it. In-app auto-update handles new versions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="screenshot-section">
+            <figure>
+                <img src="assets/screenshot.png" alt="The Wisp panel open on a macOS desktop" loading="lazy">
+                <figcaption>One file. One page. No folders, no accounts, no clutter.</figcaption>
+            </figure>
+        </section>
+
+        <section class="install" id="install">
+            <header class="section-head">
+                <h2>Install in one line.</h2>
+            </header>
+
+            <div class="install-grid">
+                <div class="install-method">
+                    <h3>Homebrew</h3>
+                    <pre><code>brew tap sulemaanhamza/wisp
+brew install --cask wisp
+xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
+                    <p class="install-note">
+                        The <code>xattr</code> line tells macOS the app is safe to open
+                        (Wisp is unsigned — no Apple Developer ID).
+                    </p>
+                </div>
+                <div class="install-method">
+                    <h3>Direct download</h3>
+                    <p>
+                        Grab the latest zip from
+                        <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>,
+                        unzip, drag <code>Wisp.app</code> to <code>/Applications</code>, then:
+                    </p>
+                    <pre><code>xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
+                    <p class="install-note">
+                        That's it — ⌥Space anywhere and Wisp slides in.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust">
+            <header class="section-head">
+                <h2>Free. Forever.</h2>
+            </header>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <strong>$0</strong>
+                    <span>No subscription, no paid tier, no upsell.</span>
+                </div>
+                <div class="trust-item">
+                    <strong>MIT</strong>
+                    <span>Open source. Read every line. Fork it. Ship it.</span>
+                </div>
+                <div class="trust-item">
+                    <strong>0 trackers</strong>
+                    <span>No analytics, no telemetry, no account, no email.</span>
+                </div>
+                <div class="trust-item">
+                    <strong>1 file</strong>
+                    <span>Your text lives in one markdown file. You own it.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-band">
+            <h2>Try it now.</h2>
+            <p>The download is under 5 MB. You'll know within thirty seconds if Wisp is for you.</p>
+            <a href="#" class="btn btn-primary btn-large" id="downloadBtn2">
+                <span class="btn-label">Download for macOS</span>
+            </a>
+            <p class="hero-fine">macOS 13 Ventura+, Apple silicon</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <span class="brand-mark">W</span>
+                <p class="footer-tag">A dead-simple macOS scratchpad.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Wisp</h4>
+                <a href="#features">Features</a>
+                <a href="#install">Install</a>
+                <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>
+            </div>
+            <div class="footer-col">
+                <h4>Source</h4>
+                <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
+                <a href="https://github.com/sulemaanhamza/wisp/issues" target="_blank" rel="noopener">Report an issue</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy policy</a>
+                <a href="terms.html">Terms of service</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Suleman Hamza</span>
+            <span>Made for people who type before they think.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
