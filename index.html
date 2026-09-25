@@ -62,7 +62,7 @@
                     </a>
                 </div>
                 <p class="hero-fine">
-                    Requires macOS 13 (Ventura) or later, Apple silicon. Free and open source.
+                    Requires macOS 13 (Ventura) or later, on Apple silicon or Intel. Free and open source.
                 </p>
             </div>
 
@@ -150,11 +150,9 @@
                 <div class="install-method">
                     <h3>Homebrew</h3>
                     <pre><code>brew tap sulemaanhamza/wisp
-brew install --cask wisp
-xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
+brew install --cask wisp</code></pre>
                     <p class="install-note">
-                        The <code>xattr</code> line tells macOS the app is safe to open
-                        (Wisp is unsigned — no Apple Developer ID).
+                        Homebrew tells macOS the app is safe to open for you.
                     </p>
                 </div>
                 <div class="install-method">
@@ -166,7 +164,9 @@ xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
                     </p>
                     <pre><code>xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
                     <p class="install-note">
-                        That's it — ⌥Space anywhere and Wisp slides in.
+                        The <code>xattr</code> line tells macOS the app is safe to open
+                        (Wisp is unsigned — no Apple Developer ID). Or skip Terminal:
+                        open Wisp once, then System Settings → Privacy &amp; Security → Open Anyway.
                     </p>
                 </div>
             </div>
@@ -202,7 +202,7 @@ xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
             <a href="#" class="btn btn-primary btn-large" id="downloadBtn2">
                 <span class="btn-label">Download for macOS</span>
             </a>
-            <p class="hero-fine">macOS 13 Ventura+, Apple silicon</p>
+            <p class="hero-fine">macOS 13 Ventura+, Apple silicon and Intel</p>
         </section>
     </main>
 
