@@ -5,34 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service — Wisp</title>
     <meta name="description" content="Wisp's terms of service. Wisp is distributed under the MIT license, provided as-is without warranty.">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='Charter, Georgia, serif'%3EW%3C/text%3E%3C/svg%3E">
+    <script>
+        try { var t = localStorage.getItem('wisp-landing-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (_) {}
+    </script>
 </head>
 <body>
-    <nav class="nav">
-        <a href="index.html" class="brand" aria-label="Wisp home">
-            <span class="brand-mark">W</span>
-            <span class="brand-name">Wisp</span>
-        </a>
-        <div class="nav-links">
-            <a href="index.html#features">Features</a>
-            <a href="index.html#install">Install</a>
-            <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme" title="Cycle theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="brand" aria-label="Wisp home">
+                <img src="assets/icon.png" alt="" width="28" height="28">
+                <span>Wisp</span>
+            </a>
+            <nav class="nav-links" aria-label="Main">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#shortcuts">Shortcuts</a>
+                <a href="index.html#install">Install</a>
+                <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Theme: system. Click to change.">
+                    <svg class="i-system" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>
+                    <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+                    <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+                </button>
+                <a class="btn btn-primary btn-small download" href="https://github.com/sulemaanhamza/wisp/releases/latest">Download</a>
+            </div>
         </div>
-    </nav>
+    </header>
 
     <main class="legal-main">
         <h1>Terms of Service</h1>
@@ -155,31 +157,34 @@
     </main>
 
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <span class="brand-mark">W</span>
-                <p class="footer-tag">A dead-simple macOS scratchpad.</p>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand"><img src="assets/icon.png" alt="" width="28" height="28"><span>Wisp</span></a>
+                <p>A clean page, one keystroke away.</p>
             </div>
             <div class="footer-col">
                 <h4>Wisp</h4>
                 <a href="index.html#features">Features</a>
+                <a href="index.html#shortcuts">Shortcuts</a>
                 <a href="index.html#install">Install</a>
                 <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>
             </div>
             <div class="footer-col">
                 <h4>Source</h4>
                 <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
                 <a href="https://github.com/sulemaanhamza/wisp/issues" target="_blank" rel="noopener">Report an issue</a>
+                <a href="https://buymeacoffee.com/sulemanhamza" target="_blank" rel="noopener">Buy me a coffee</a>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
-                <a href="privacy.html">Privacy policy</a>
-                <a href="terms.html">Terms of service</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 Suleman Hamza</span>
+        <div class="container footer-bottom">
+            <span>© <span id="year">2026</span> Suleman Hamza</span>
             <span>Made for people who type before they think.</span>
         </div>
     </footer>
