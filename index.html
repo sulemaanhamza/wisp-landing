@@ -3,235 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Wisp is a dead-simple macOS scratchpad. ⌥Space to summon, type, Esc to dismiss. Free, open source, no account required.">
-    <meta name="theme-color" content="#0f0f12">
+    <title>Wisp — a clean page, one keystroke away</title>
+    <meta name="description" content="Wisp is a scratchpad for your Mac's menu bar. Press ⌥Space anywhere, write, press Esc. Sums answer themselves, reminders notify you, and everything stays one plain markdown file. Free and open source.">
+    <meta name="theme-color" content="#FBF8F2" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#100F0D" media="(prefers-color-scheme: dark)">
 
-    <meta property="og:title" content="Wisp — a dead-simple macOS scratchpad">
-    <meta property="og:description" content="One keystroke. One page. No accounts, no folders, no friction.">
+    <meta property="og:title" content="Wisp — a clean page, one keystroke away">
+    <meta property="og:description" content="A scratchpad for your Mac's menu bar. ⌥Space, write, Esc. Free and open source.">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sulemaanhamza.github.io/wisp-landing/">
+    <meta property="og:image" content="https://sulemaanhamza.github.io/wisp-landing/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
 
-    <title>Wisp — a dead-simple macOS scratchpad</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='Charter, Georgia, serif'%3EW%3C/text%3E%3C/svg%3E">
+    <script>
+        // Set the theme before first paint, so a saved choice never flashes.
+        try { var t = localStorage.getItem('wisp-landing-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (_) {}
+    </script>
 </head>
 <body>
-    <nav class="nav">
-        <a href="/" class="brand" aria-label="Wisp home">
-            <span class="brand-mark">W</span>
-            <span class="brand-name">Wisp</span>
-        </a>
-        <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#install">Install</a>
-            <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Cycle theme" title="Cycle theme">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
-        </div>
-    </nav>
+    <a class="skip" href="#main">Skip to content</a>
 
-    <main>
+    <header class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="brand" aria-label="Wisp home">
+                <img src="assets/icon.png" alt="" width="28" height="28">
+                <span>Wisp</span>
+            </a>
+            <nav class="nav-links" aria-label="Main">
+                <a href="#features">Features</a>
+                <a href="#shortcuts">Shortcuts</a>
+                <a href="#install">Install</a>
+                <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Theme: system. Click to change.">
+                    <svg class="i-system" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>
+                    <svg class="i-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+                    <svg class="i-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+                </button>
+                <a class="btn btn-primary btn-small download" href="https://github.com/sulemaanhamza/wisp/releases/latest">Download</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero -->
         <section class="hero">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="hero-line">A clean page,</span>
-                    <span class="hero-line muted">one keystroke away.</span>
-                </h1>
-                <p class="hero-desc">
-                    Wisp is a macOS scratchpad. Press <kbd>⌥</kbd><kbd>Space</kbd> anywhere
-                    and a glass panel slides in. Type. Hit <kbd>Esc</kbd>. It's gone — but
-                    your text stays, as plain markdown on disk.
+            <div class="hero-glow" aria-hidden="true"></div>
+            <div class="container hero-copy">
+                <a class="pill" href="#reminders">
+                    <span class="pill-dot"></span>
+                    New: reminders that live in your note
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <h1>A clean page,<br><span class="soft">one keystroke away.</span></h1>
+                <p class="lede">
+                    Wisp is a scratchpad that lives in your Mac's menu bar. Press
+                    <span class="nowrap"><kbd>⌥</kbd><kbd>Space</kbd></span> anywhere, write, press <kbd>Esc</kbd>.
+                    It's gone — and everything you wrote stays, as one plain markdown file.
                 </p>
                 <div class="hero-cta">
-                    <a href="#" class="btn btn-primary" id="downloadBtn">
-                        <span class="btn-label">Download for macOS</span>
-                        <span class="btn-meta" id="downloadMeta">Latest release</span>
+                    <a class="btn btn-primary btn-large download" href="https://github.com/sulemaanhamza/wisp/releases/latest">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+                        <span>Download for Mac</span>
                     </a>
-                    <a href="https://github.com/sulemaanhamza/wisp" class="btn btn-ghost" target="_blank" rel="noopener">
-                        View source
-                    </a>
+                    <button class="copy-chip" type="button" data-copy="brew install --cask sulemaanhamza/wisp/wisp" aria-label="Copy the Homebrew install command">
+                        <span class="prompt">$</span>
+                        <code>brew install --cask sulemaanhamza/wisp/wisp</code>
+                        <span class="copy-state" aria-hidden="true">Copy</span>
+                    </button>
                 </div>
-                <p class="hero-fine">
-                    Requires macOS 13 (Ventura) or later, Apple silicon. Free and open source.
-                </p>
+                <p class="fine"><span id="versionLine">Free and open source</span> · macOS 13 or later · Apple silicon and Intel · About 1 MB</p>
             </div>
 
-            <div class="hero-visual" aria-hidden="true">
-                <div class="desktop">
-                    <div class="menubar">
-                        <span class="menubar-dot"></span>
-                        <span class="menubar-glyph">≋</span>
+            <div class="container">
+                <div class="stage" id="stage" role="img" aria-label="Wisp in use: Option-Space opens a note over the desktop. A heading, a ticked task, a sum answered as 725, and a reminder line for 3pm, which later arrives as a notification.">
+                    <div class="wallpaper" aria-hidden="true"></div>
+                    <div class="menubar" aria-hidden="true">
+                        <span class="mb-apps"><span></span><span></span><span></span></span>
+                        <span class="mb-right">
+                            <span class="mb-wisp">W</span>
+                            <span class="mb-clock" id="heroClock">Fri 3:00 PM</span>
+                        </span>
                     </div>
-                    <div class="panel">
-                        <div class="panel-body">
-                            <p class="panel-line panel-h">## Today</p>
-                            <p class="panel-line">- review PR #3</p>
-                            <p class="panel-line">- ship v0.1.40</p>
-                            <p class="panel-line">- <span class="panel-cursor"></span></p>
-                            <p class="panel-line panel-divider" aria-hidden="true"></p>
-                            <p class="panel-line panel-muted">A clean page, one keystroke away.</p>
+
+                    <div class="keys" id="heroKeys" aria-hidden="true"><kbd>⌥</kbd><kbd>Space</kbd></div>
+
+                    <div class="wpanel hero-panel" id="heroPanel" aria-hidden="true">
+                        <div class="wbody" id="heroBody">
+                            <p class="l h"><span class="syn"># </span>Friday</p>
+                            <p class="l done"><span class="syn">- [x] </span><s>Book flights</s></p>
+                            <p class="l">Flights 2 × 340 + 45 =<span class="ans"> 725</span></p>
+                            <p class="l">Remind me at 3pm to call John<span class="lab"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>sent 3:00 PM</span></p>
+                            <p class="l"><span class="caret"></span></p>
                         </div>
-                        <div class="panel-footer">
-                            <span class="panel-words">8 words</span>
-                            <span class="panel-icons">? ☀ Aa</span>
-                            <span class="panel-esc">esc to close</span>
+                        <div class="wfoot">
+                            <span id="heroWords">14 words</span>
+                            <span class="wfoot-right"><span class="q">?</span><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><span class="aa">Aa</span><span>esc to close</span></span>
                         </div>
                     </div>
-                    <div class="kbd-hint">
-                        <kbd>⌥</kbd><kbd>Space</kbd>
+
+                    <div class="toast" id="heroToast" aria-hidden="true">
+                        <img src="assets/icon.png" alt="" width="34" height="34">
+                        <div>
+                            <div class="toast-top"><strong>Wisp</strong><span>now</span></div>
+                            <p>Remind me at 3pm to call John</p>
+                        </div>
                     </div>
+
+                    <div class="keys keys-small" id="heroTick" aria-hidden="true"><kbd>⌘</kbd><kbd>L</kbd></div>
                 </div>
             </div>
         </section>
 
+        <!-- How it works -->
+        <section class="steps container" aria-label="How it works">
+            <div class="step">
+                <div class="step-keys"><kbd>⌥</kbd><kbd>Space</kbd></div>
+                <h3>Summon it</h3>
+                <p>From any app, any desktop, full screen or not. The shortcut is yours to change.</p>
+            </div>
+            <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 40 12"><path d="M0 6h36M31 1l5 5-5 5"/></svg></div>
+            <div class="step">
+                <div class="step-keys"><span class="step-type">Type<span class="caret"></span></span></div>
+                <h3>Write</h3>
+                <p>The caret is already waiting. No new file, no title, no folder to pick.</p>
+            </div>
+            <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 40 12"><path d="M0 6h36M31 1l5 5-5 5"/></svg></div>
+            <div class="step">
+                <div class="step-keys"><kbd>Esc</kbd></div>
+                <h3>Get back to work</h3>
+                <p>It slips away and hands you back to where you were. Saved as you typed.</p>
+            </div>
+        </section>
+
+        <!-- Features -->
         <section class="features" id="features">
-            <header class="section-head">
-                <h2>Everything you need.<br><span class="muted">Nothing you don't.</span></h2>
-            </header>
+            <div class="container">
+                <header class="section-head">
+                    <p class="kicker">What it does</p>
+                    <h2>Small on purpose.<br><span class="soft">Clever where it counts.</span></h2>
+                </header>
 
-            <div class="feature-grid">
-                <div class="feature">
-                    <h3>One keystroke</h3>
-                    <p>⌥Space anywhere on macOS summons the panel. Rebindable to any combo.
-                       Esc dismisses and returns focus to where you were.</p>
-                </div>
-                <div class="feature">
-                    <h3>Plain markdown</h3>
-                    <p>Your text lives at <code>~/Library/Application Support/Wisp/scratchpad.md</code>.
-                       Open it in any editor. Pipe it through anything. It's just a file.</p>
-                </div>
-                <div class="feature">
-                    <h3>Sync across Macs</h3>
-                    <p>Point Wisp at any folder — iCloud Drive, Dropbox, Syncthing — and your
-                       scratchpad follows you to every Mac you own. macOS handles the sync.</p>
-                </div>
-                <div class="feature">
-                    <h3>Smart editing</h3>
-                    <p>Lists auto-continue. <code>---</code> becomes a full-width divider.
-                       <code>**bold**</code> renders inline. Headings get a jump-bar at the top.
-                       <code>:rocket:</code> becomes 🚀.</p>
-                </div>
-                <div class="feature">
-                    <h3>Light, dark, system</h3>
-                    <p>Six preinstalled serifs and sans. Three text sizes. Theme follows your
-                       OS by default, or pin it to light or dark.</p>
-                </div>
-                <div class="feature">
-                    <h3>Quiet at login</h3>
-                    <p>Launch at Login starts Wisp silently in the menu bar — ready for
-                       ⌥Space the moment you need it. In-app auto-update handles new versions.</p>
+                <div class="bento">
+                    <!-- Maths -->
+                    <article class="card card-wide reveal">
+                        <div class="card-copy">
+                            <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h6M8 5v6M14 8h5M5 17l5-5M10 17l-5-5M14 15h5M14 19h5"/></svg></div>
+                            <h3>Sums answer themselves</h3>
+                            <p>End a line with <code>=</code> and the answer appears beside it, dimmed. Units, percentages and money too. Tab types it in for real; nothing is sent anywhere.</p>
+                        </div>
+                        <div class="wpanel mini" aria-label="Examples of inline maths">
+                            <div class="wbody">
+                                <p class="l">Flights 2 × 340 + 45 =<span class="ans"> 725</span></p>
+                                <p class="l">5 km + 300 m =<span class="ans"> 5.3 km</span></p>
+                                <p class="l">Lunch $14 + tip 18% =<span class="ans"> $16.52</span></p>
+                                <p class="l">$12 × 3 =<span class="ans"> $36</span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Reminders -->
+                    <article class="card card-wide reveal" id="reminders">
+                        <div class="card-copy">
+                            <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></div>
+                            <h3>Remind me…</h3>
+                            <p>Start a line with “Remind me” and a time. Wisp shows what it understood, sets it when you finish the line, and brings you back to it with a notification. Tick it off when it's done.</p>
+                        </div>
+                        <div class="wpanel mini" aria-label="Examples of reminder lines">
+                            <div class="wbody">
+                                <p class="l">Remind me in 10 minutes to check the oven<span class="lab">→ 3:52 PM</span></p>
+                                <p class="l">Remind me Friday at 3pm to send the invoice<span class="lab"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>Fri 3:00 PM</span></p>
+                                <p class="l">Remind me tomorrow to call mum<span class="lab"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.8"/></svg>sent 9:00 AM</span></p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Markdown -->
+                    <article class="card card-tall reveal">
+                        <div class="card-copy">
+                            <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M7 15V9l2.5 3L12 9v6M15.5 9v6M14 13l1.5 2 1.5-2"/></svg></div>
+                            <h3>Markdown, kept plain</h3>
+                            <p>Headings, lists, checklists, links and code look right as you type — and the file stays exactly what you typed.</p>
+                        </div>
+                        <div class="split">
+                            <div class="wpanel mini">
+                                <div class="wbody">
+                                    <p class="l h"><span class="syn"># </span>Trip</p>
+                                    <p class="l"><span class="syn">- [ ] </span>Book the hotel</p>
+                                    <p class="l done"><span class="syn">- [x] </span><s>Renew passport</s></p>
+                                    <p class="l">Pack the <b>charger</b></p>
+                                </div>
+                            </div>
+                            <pre class="rawfile" aria-label="The same note as plain text"><span class="file">scratchpad.md</span># Trip
+- [ ] Book the hotel
+- [x] Renew passport
+Pack the **charger**</pre>
+                        </div>
+                    </article>
+
+                    <!-- Sync -->
+                    <article class="card reveal">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 10 4 4 0 0 0 7 18z"/></svg></div>
+                        <h3>Sync with any folder</h3>
+                        <p>Point Wisp at iCloud Drive, Dropbox or Syncthing and your page follows you to every Mac — and to your iPhone's Files app.</p>
+                        <div class="chips"><span>iCloud Drive</span><span>Dropbox</span><span>Syncthing</span></div>
+                    </article>
+
+                    <!-- History -->
+                    <article class="card reveal">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4M12 8v4.5l3 2"/></svg></div>
+                        <h3>Nothing is lost</h3>
+                        <p>Earlier versions are kept on your Mac. <kbd>⇧⌘↩</kbd> files the page in your Inbox and hands you a fresh one.</p>
+                        <ul class="timeline" aria-label="Example version history">
+                            <li><span>Today, 3:41 PM</span></li>
+                            <li><span>Today, 9:02 AM</span></li>
+                            <li><span>Yesterday</span></li>
+                        </ul>
+                    </article>
+
+                    <!-- Make it yours -->
+                    <article class="card reveal">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l5-14h1l5 14M7 14h8"/><path d="M18 9.5c1.6 0 2.5 1 2.5 2.4V19"/></svg></div>
+                        <h3>Make it yours</h3>
+                        <p>Eight fonts, light or dark, and as much of your desktop showing through as you like.</p>
+                        <div class="fonts" aria-label="Some of the fonts">
+                            <span style="font-family: Charter, Georgia, serif">Charter</span>
+                            <span style="font-family: 'Iowan Old Style', Palatino, serif">Iowan</span>
+                            <span style="font-family: Palatino, 'Palatino Linotype', serif">Palatino</span>
+                            <span style="font-family: Optima, Candara, sans-serif">Optima</span>
+                            <span style="font-family: 'Avenir Next', Avenir, sans-serif">Avenir</span>
+                        </div>
+                    </article>
+
+                    <!-- Keyboard -->
+                    <article class="card reveal">
+                        <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><path d="M6 10h1M9.5 10h1M13 10h1M16.5 10h1M7 14h10"/></svg></div>
+                        <h3>Hands stay on the keys</h3>
+                        <p>Tick a task, move a line, type today's date, find anything — without reaching for the mouse.</p>
+                        <div class="keyrow"><kbd>⌘L</kbd><kbd>⌥↑</kbd><kbd>⌥↓</kbd><kbd>⇧⌘D</kbd><kbd>⌘F</kbd></div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="screenshot-section">
-            <figure>
-                <img src="assets/screenshot.png" alt="The Wisp panel open on a macOS desktop" loading="lazy">
-                <figcaption>One file. One page. No folders, no accounts, no clutter.</figcaption>
-            </figure>
-        </section>
-
-        <section class="install" id="install">
-            <header class="section-head">
-                <h2>Install in one line.</h2>
-            </header>
-
-            <div class="install-grid">
-                <div class="install-method">
-                    <h3>Homebrew</h3>
-                    <pre><code>brew tap sulemaanhamza/wisp
-brew install --cask wisp
-xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
-                    <p class="install-note">
-                        The <code>xattr</code> line tells macOS the app is safe to open
-                        (Wisp is unsigned — no Apple Developer ID).
-                    </p>
-                </div>
-                <div class="install-method">
-                    <h3>Direct download</h3>
-                    <p>
-                        Grab the latest zip from
-                        <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>,
-                        unzip, drag <code>Wisp.app</code> to <code>/Applications</code>, then:
-                    </p>
-                    <pre><code>xattr -d com.apple.quarantine /Applications/Wisp.app</code></pre>
-                    <p class="install-note">
-                        That's it — ⌥Space anywhere and Wisp slides in.
-                    </p>
+        <!-- Shortcuts -->
+        <section class="shortcuts" id="shortcuts">
+            <div class="container">
+                <header class="section-head">
+                    <p class="kicker">Shortcuts</p>
+                    <h2>The whole manual<br><span class="soft">fits on one card.</span></h2>
+                </header>
+                <div class="sheet reveal">
+                    <div class="sheet-col">
+                        <h3>Panel</h3>
+                        <dl>
+                            <div><dt>Show or hide Wisp</dt><dd><kbd>⌥</kbd><kbd>Space</kbd></dd></div>
+                            <div><dt>Close</dt><dd><kbd>Esc</kbd></dd></div>
+                            <div><dt>Find, then step through</dt><dd><kbd>⌘F</kbd><kbd>↵</kbd></dd></div>
+                            <div><dt>File in the Inbox, start fresh</dt><dd><kbd>⇧⌘↩</kbd></dd></div>
+                        </dl>
+                    </div>
+                    <div class="sheet-col">
+                        <h3>Editing</h3>
+                        <dl>
+                            <div><dt>Make a task, or tick it off</dt><dd><kbd>⌘L</kbd></dd></div>
+                            <div><dt>Move the line up or down</dt><dd><kbd>⌥↑</kbd><kbd>⌥↓</kbd></dd></div>
+                            <div><dt>Bold, italic</dt><dd><kbd>⌘B</kbd><kbd>⌘I</kbd></dd></div>
+                            <div><dt>Insert today's date</dt><dd><kbd>⇧⌘D</kbd></dd></div>
+                        </dl>
+                    </div>
+                    <div class="sheet-col">
+                        <h3>Just type</h3>
+                        <dl>
+                            <div><dt>Heading, list, checklist</dt><dd><code>#</code><code>-</code><code>- [ ]</code></dd></div>
+                            <div><dt>Divider</dt><dd><code>---</code></dd></div>
+                            <div><dt>Emoji</dt><dd><code>:rocket:</code></dd></div>
+                            <div><dt>A sum, then Tab</dt><dd><code>12 × 3 =</code></dd></div>
+                        </dl>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Trust -->
         <section class="trust">
-            <header class="section-head">
-                <h2>Free. Forever.</h2>
-            </header>
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <strong>$0</strong>
-                    <span>No subscription, no paid tier, no upsell.</span>
+            <div class="container">
+                <header class="section-head">
+                    <p class="kicker">Yours</p>
+                    <h2>Free. Private.<br><span class="soft">Just a file.</span></h2>
+                </header>
+                <div class="stats">
+                    <div class="stat reveal"><strong>$0</strong><p>No subscription, no paid tier, no account to make.</p></div>
+                    <div class="stat reveal"><strong>MIT</strong><p>Open source. Read every line, fork it, build it yourself.</p></div>
+                    <div class="stat reveal"><strong>0</strong><p>Trackers. The only thing it asks the internet is whether there's an update.</p></div>
+                    <div class="stat reveal"><strong>1 file</strong><p>Your words live in one markdown file you can open with anything.</p></div>
                 </div>
-                <div class="trust-item">
-                    <strong>MIT</strong>
-                    <span>Open source. Read every line. Fork it. Ship it.</span>
-                </div>
-                <div class="trust-item">
-                    <strong>0 trackers</strong>
-                    <span>No analytics, no telemetry, no account, no email.</span>
-                </div>
-                <div class="trust-item">
-                    <strong>1 file</strong>
-                    <span>Your text lives in one markdown file. You own it.</span>
+                <div class="support reveal">
+                    <div class="card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8.5 3v3M12.5 3v3"/></svg></div>
+                    <div class="support-copy">
+                        <h3>Made by one person, in the open.</h3>
+                        <p>Wisp is free and always will be. If it's earned a place in your day, a coffee helps keep it going.</p>
+                    </div>
+                    <a class="btn btn-coffee" href="https://buymeacoffee.com/sulemanhamza" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8.5 3v3M12.5 3v3"/></svg><span>Buy me a coffee</span></a>
                 </div>
             </div>
         </section>
 
-        <section class="cta-band">
-            <h2>Try it now.</h2>
-            <p>The download is under 5 MB. You'll know within thirty seconds if Wisp is for you.</p>
-            <a href="#" class="btn btn-primary btn-large" id="downloadBtn2">
-                <span class="btn-label">Download for macOS</span>
-            </a>
-            <p class="hero-fine">macOS 13 Ventura+, Apple silicon</p>
+        <!-- Install -->
+        <section class="install" id="install">
+            <div class="container">
+                <header class="section-head">
+                    <p class="kicker">Install</p>
+                    <h2>Thirty seconds<br><span class="soft">from here to ⌥Space.</span></h2>
+                </header>
+                <div class="install-grid">
+                    <div class="install-card reveal">
+                        <div class="install-top"><h3>Homebrew</h3><span class="tag">Easiest</span></div>
+                        <p>One line, and Homebrew tells macOS the app is safe to open. Updates come through Wisp itself.</p>
+                        <button class="codeblock" type="button" data-copy="brew install --cask sulemaanhamza/wisp/wisp" aria-label="Copy the Homebrew install command">
+                            <code><span class="prompt">$</span> brew install --cask sulemaanhamza/wisp/wisp</code>
+                            <span class="copy-state" aria-hidden="true">Copy</span>
+                        </button>
+                    </div>
+                    <div class="install-card reveal">
+                        <div class="install-top"><h3>Download</h3></div>
+                        <ol>
+                            <li>Download the zip, unzip it, and drag Wisp to Applications.</li>
+                            <li>Open it once. macOS warns that it can't check the app — Wisp isn't signed with a paid Apple certificate.</li>
+                            <li>In System Settings → Privacy &amp; Security, click <b>Open Anyway</b>.</li>
+                        </ol>
+                        <a class="btn btn-secondary download" href="https://github.com/sulemaanhamza/wisp/releases/latest">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+                            <span>Download for Mac</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq" id="faq">
+            <div class="container narrow">
+                <header class="section-head">
+                    <p class="kicker">Questions</p>
+                    <h2>Fair questions.</h2>
+                </header>
+                <details class="reveal">
+                    <summary>Is it really free?</summary>
+                    <p>Yes. No paid tier, no trial, no account. Wisp is MIT-licensed open source, built and maintained in the open on GitHub. If you'd like to say thanks, you can <a href="https://buymeacoffee.com/sulemanhamza" target="_blank" rel="noopener">buy me a coffee</a>.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Why does macOS say it can't check Wisp?</summary>
+                    <p>Signing an app with Apple costs a yearly fee that a free, open source app doesn't have. The code is all on GitHub to read. Installing with Homebrew skips the warning; for a download, open Wisp once, then click Open Anyway in System Settings → Privacy &amp; Security.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Where does my writing go?</summary>
+                    <p>Into one plain file, <code>scratchpad.md</code>, in <code>~/Library/Application Support/Wisp</code> — or any folder you choose, such as iCloud Drive. Earlier versions and filed pages stay on your Mac.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Can I read it on my iPhone?</summary>
+                    <p>Keep the folder in iCloud Drive and open <code>scratchpad.md</code> in the Files app or any markdown editor. Edits sync back to your Mac.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Does Wisp send anything anywhere?</summary>
+                    <p>Only a check for updates to GitHub's public releases page, and the download when you choose to update. No analytics, no telemetry, nothing about your notes. The <a href="privacy.html">privacy policy</a> lists it all.</p>
+                </details>
+                <details class="reveal">
+                    <summary>Which Macs does it run on?</summary>
+                    <p>macOS 13 Ventura or later, on Apple silicon and Intel. It's about a 1 MB download.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta">
+            <div class="container cta-inner reveal">
+                <img src="assets/icon.png" alt="" width="96" height="96">
+                <h2>Give it thirty seconds.</h2>
+                <p>You'll know straight away whether Wisp is for you.</p>
+                <div class="hero-cta">
+                    <a class="btn btn-primary btn-large download" href="https://github.com/sulemaanhamza/wisp/releases/latest">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+                        <span>Download for Mac</span>
+                    </a>
+                    <a class="btn btn-ghost btn-large" href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">
+                        <svg class="solid" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.7c-2.6.6-3.2-1.2-3.2-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.1-.2-4.3-1-4.3-4.6 0-1 .4-1.9 1-2.5-.1-.3-.4-1.2.1-2.5 0 0 .8-.3 2.6 1a9 9 0 0 1 4.7 0c1.8-1.3 2.6-1 2.6-1 .5 1.3.2 2.2.1 2.5.6.6 1 1.5 1 2.5 0 3.6-2.2 4.4-4.3 4.6.3.3.6.8.6 1.6v2.4c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5z"/></svg>
+                        <span>View on GitHub</span>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <span class="brand-mark">W</span>
-                <p class="footer-tag">A dead-simple macOS scratchpad.</p>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand"><img src="assets/icon.png" alt="" width="28" height="28"><span>Wisp</span></a>
+                <p>A clean page, one keystroke away.</p>
             </div>
             <div class="footer-col">
                 <h4>Wisp</h4>
-                <a href="#features">Features</a>
-                <a href="#install">Install</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#shortcuts">Shortcuts</a>
+                <a href="index.html#install">Install</a>
                 <a href="https://github.com/sulemaanhamza/wisp/releases" target="_blank" rel="noopener">Releases</a>
             </div>
             <div class="footer-col">
                 <h4>Source</h4>
                 <a href="https://github.com/sulemaanhamza/wisp" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
                 <a href="https://github.com/sulemaanhamza/wisp/issues" target="_blank" rel="noopener">Report an issue</a>
+                <a href="https://buymeacoffee.com/sulemanhamza" target="_blank" rel="noopener">Buy me a coffee</a>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
-                <a href="privacy.html">Privacy policy</a>
-                <a href="terms.html">Terms of service</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="https://github.com/sulemaanhamza/wisp/blob/main/LICENSE" target="_blank" rel="noopener">License (MIT)</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 Suleman Hamza</span>
+        <div class="container footer-bottom">
+            <span>© <span id="year">2026</span> Suleman Hamza</span>
             <span>Made for people who type before they think.</span>
         </div>
     </footer>

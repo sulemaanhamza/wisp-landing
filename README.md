@@ -7,12 +7,12 @@ and one small JS file.
 ## Files
 
 ```
-index.html            Hero, features, install, trust band, CTA, footer
-privacy.html          Privacy policy (full page)
-terms.html            Terms of service (full page)
-styles.css            All styling; dark / light / system theme variables
-script.js             Theme cycle + dynamic download link + scroll reveal
-assets/screenshot.png Copied from the Wisp repo's docs/
+index.html     Hero, how it works, features, shortcuts, privacy, install, FAQ
+privacy.html   Privacy policy
+terms.html     Terms of service
+styles.css     All styling; light / dark / system theme tokens at the top
+script.js      Theme cycle, download link, copy buttons, scroll reveal, hero demo
+assets/        icon.png (and favicon / apple-touch sizes), og.png for link previews
 ```
 
 ## Preview locally
@@ -51,8 +51,12 @@ let it deploy on push. Build command: none. Publish directory: `.`.
   the policy text meaningfully changes.
 - Theme variables live at the top of `styles.css` (`:root` and
   `html[data-theme="light"]`) — change one variable to recolor the whole page.
-- The faux Wisp panel in the hero is pure HTML/CSS, no JS. Edit the lines
-  inside `.panel-body` in `index.html` to change what the preview "types".
+- The hero is an HTML/CSS copy of the Wisp panel, in the app's own colours.
+  `index.html` holds its finished state (what visitors without script, or with
+  Reduce Motion, see); `script.js` plays it typed out once when it scrolls
+  into view. Change both together.
+- `assets/og.png` is the image shown when the page is shared. It's a 1200×630
+  picture of the hero; redo it if the hero changes.
 - The Download button text is in `index.html` (search for "Download for macOS").
 
 ## What's intentionally absent
